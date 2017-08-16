@@ -26,6 +26,7 @@ body{
     z-index: 1;
     width: 4200px;
     height: 600px;
+    transition:all .5s ease-in-out;
 
 
 }

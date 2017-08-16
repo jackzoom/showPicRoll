@@ -20,10 +20,12 @@ function roll(speed,terminal,flag){
     var img_leftVal=parseInt(img_show.style.left);
     if(img_leftVal===terminal){
         img_show.style.left=flag;
+
         img_leftVal=parseInt(img_show.style.left);
     }
     else
     {
+
         img_leftVal+=speed;
         img_show.style.left=img_leftVal+"px";
     }
@@ -42,7 +44,8 @@ function roll(speed,terminal,flag){
             btn_ico[value].onclick=function(){
 
                 //修改选中的图片
-                img_show.style.left=value*(-800)+"px";
+                img_show.style.left=value*(-600)+"px";
+
 
                 //设置所有btn_ico的状态为未选中
                 for(var j=0;j<btn_ico.length;j++){
@@ -54,4 +57,28 @@ function roll(speed,terminal,flag){
             }
         })(i);
     }
+
+    //定时器，设置自动轮播
+    var timer_in=setInterval(function () {
+
+        roll(600,0,"-2400px");
+
+    },2000);
+    img_show.onmousemove=function () {
+        clearInterval(timer_in);
+        clearInterval(timer_out);
+
+    }
+    var timer_out=null;
+    img_show.onmouseout=function () {
+        clearInterval(timer_in);
+        clearInterval(timer_out);
+        timer_out=setInterval(function () {
+            roll(600,0,"-2400px");
+        },2000)
+
+
+
+    }
+
 }
